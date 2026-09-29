@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Carrossel | Formando para o Futuro</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS INTERNO E ESTILIZAÇÃO COMPLETA */
+        :root {
+            --primary: #0d47a1;     /* Azul Escuro / Institucional */
+            --secondary: #1e88e5;   /* Azul Claro / Destaques */
+            --accent: #ffca28;      /* Amarelo para botões de atenção */
+            --light: #f8f9fa;       /* Fundo Claro */
+            --dark: #212529;        /* Texto Escuro */
+            --white: #ffffff;       /* Branco */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* BARRA SUPERIOR DE CONTATO */
+        .top-bar {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 8px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* NAV/CABEÇALHO */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .btn-cta {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(13, 71, 161, 0.8), rgba(30, 136, 229, 0.7)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-hero {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            background-color: #ffb300;
+        }
+
+        /* SEÇÕES GERAIS */
+        section {
+            padding: 70px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* SOBRE NÓS */
+        .sobre-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .sobre-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* MODALIDADES DE ENSINO */
+        .modalidades {
+            background-color: var(--light);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 5px solid var(--secondary);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* DIFERENCIAIS */
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .diferencial-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .diferencial-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* CONTATO & FORMULÁRIO */
+        .contato-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary);
+        }
+
+        /* BOTÃO FLUTUANTE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 10% 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* DESIGN RESPONSIVO */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .sobre-container, .contato-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .top-bar { flex-direction: column; gap: 5px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR DE CONTATO -->
+    <div class="top-bar">
+        <div>
+            <i class="fa-solid fa-phone"></i> (83) 99999-9999
+            <i class="fa-solid fa-envelope" style="margin-left: 15px;"></i> contato@escolacarrossel.com.br
+        </div>
+        <div>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    </div>
+
+    <!-- NAVEGAÇÃO / HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fa-solid fa-child-reaching"></i> Escola Carrossel
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Quem Somos</a></li>
+                <li><a href="#modalidades">Ensino</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <a href="#contato" class="btn-cta">Agendar Visita</a>
+        </nav>
+    </header>
+
+    <!-- BANNER PRINCIPAL (HERO) -->
+    <section id="home" class="hero">
+        <h1>Educando com Amor e Preparando para o Futuro</h1>
+        <p>Proporcionamos uma formação integral, estimulando a criatividade, autonomia e excelência acadêmica na Educação Infantil e Ensino Fundamental.</p>
+        <a href="#contato" class="btn-hero">Matrículas Abertas 2027</a>
+    </section>
+
+    <!-- SOBRE NÓS -->
+    <section id="sobre">
+        <h2 class="section-title">Quem Somos</h2>
+        <div class="sobre-container">
+            <div class="sobre-texto">
+                <h3>Tradição e Inovação no Ensino</h3>
+                <p>A <strong>Escola Carrossel</strong> nasceu com a missão de oferecer um ensino acolhedor e de alta qualidade. Acreditamos que o aprendizado acontece por meio da descoberta, do afeto e do desenvolvimento do pensamento crítico.</p>
+                <p style="margin-top: 15px;">Contamos com infraestrutura moderna, corpo docente qualificado e uma proposta pedagógica sólida que visa o desenvolvimento intelectual, socioemocional e físico de cada criança.</p>
+            </div>
+            <div class="sobre-img">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Alunos na Escola Carrossel">
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALIDADES DE ENSINO -->
+    <section id="modalidades" class="modalidades">
+        <h2 class="section-title">Níveis de Ensino</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-shapes"></i></div>
+                <h3>Educação Infantil</h3>
+                <p>Estímulo ao desenvolvimento motor, social e cognitivo por meio de brincadeiras direcionadas, atividades lúdicas e socialização afetuosa.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                <h3>Ensino Fundamental I</h3>
+                <p>Foco no alfabetização plena, raciocínio lógico-matemático e incentivo à curiosidade científica e artística dos alunos.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h3>Ensino Fundamental II</h3>
+                <p>Desenvolvimento da autonomia de estudos, pensamento crítico e preparação abrangente para os desafios do Ensino Médio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais">
+        <h2 class="section-title">Nossos Diferenciais</h2>
+        <div class="diferenciais-grid">
+            <div class="diferencial-item">
+                <i class="fa-solid fa-robot"></i>
+                <h4>Robótica Educativa</h4>
+                <p>Aulas práticas para o desenvolvimento do raciocínio lógico e resolução de problemas.</p>
+            </div>
+            <div class="diferencial-item">
+                <i class="fa-solid fa-language"></i>
+                <h4>Programa Bilíngue</h4>
+                <p>Imersão no idioma inglês de forma natural e contextualizada desde os primeiros anos.</p>
+            </div>
+            <div class="diferencial-item">
+                <i class="fa-solid fa-futbol"></i>
+                <h4>Esportes & Arte</h4>
+                <p>Incentivo à prática esportiva, expressão cultural e consciência corporal.</p>
+            </div>
+            <div class="diferencial-item">
+                <i class="fa-solid fa-brain"></i>
+                <h4>Apoio Psicopedagógico</h4>
+                <p>Acompanhamento dedicado para orientar o aprendizado e bem-estar socioemocional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO E FORMULÁRIO -->
+    <section id="contato">
+        <h2 class="section-title">Fale Conosco</h2>
+        <div class="contato-container">
+            <div class="contato-info">
+                <h3>Venha nos Fazer uma Visita!</h3>
+                <p>Agende um horário para conhecer nossa estrutura e conversar com nossa equipe pedagógica.</p>
+                <br>
+                <p><i class="fa-solid fa-location-dot"></i> Av. Principal da Cidade, 1000 - João Pessoa / PB</p>
+                <p><i class="fa-solid fa-phone"></i> (83) 99999-9999</p>
+                <p><i class="fa-solid fa-clock"></i> Segunda a Sexta: 07h00 às 18h00</p>
+            </div>
+            
+            <form onsubmit="enviarMensagem(event)">
+                <div class="form-group">
+                    <label>Nome do Responsável:</label>
+                    <input type="text" id="nome" required placeholder="Digite seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label>Telefone / WhatsApp:</label>
+                    <input type="tel" id="telefone" required placeholder="(83) 99999-9999">
+                </div>
+                <div class="form-group">
+                    <label>Interesse de Matrícula:</label>
+                    <select id="serie">
+                        <option>Educação Infantil</option>
+                        <option>Ensino Fundamental I</option>
+                        <option>Ensino Fundamental II</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Solicitar Agendamento</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://wa.me/5583999999999" class="whatsapp-float" target="_blank" title="Fale pelo WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="color: var(--white);">
+                <i class="fa-solid fa-child-reaching"></i> Escola Carrossel
+            </div>
+            <p>&copy; 2026 Escola Carrossel. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function enviarMensagem(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const serie = document.getElementById('serie').value;
+
+            const mensagem = `Olá! Gostaria de agendar uma visita na Escola Carrossel.\n\nNome: ${nome}\nTelefone: ${telefone}\nInteresse: ${serie}`;
+            
+            // Redireciona diretamente para o WhatsApp da escola
+            const url = `https://wa.me/5583999999999?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
